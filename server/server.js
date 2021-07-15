@@ -3,7 +3,7 @@ const path = require('path');
 const db = require('./config/connection');
 const routes = require('./routes');
 const { authMiddleware } = require('./utils/auth');
-const { AppolloServer } = require('apollo-server-express')
+const { ApolloServer } = require('apollo-server-express')
 
 const { typeDefs, resolvers } = require('./schemas')
 
@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3001;
 
 //create a new Apollo server and pass in our schema data
 
-const server = new AppolloServer({
+const server = new ApolloServer({
   typeDefs,
   resolvers,
   context: authMiddleware
@@ -40,7 +40,3 @@ db.once('open', () => {
     console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
   });
 });
-
-//Testing comments
-
-//Testing comments//Testing comments
